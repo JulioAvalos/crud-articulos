@@ -1,0 +1,53 @@
+version: '3.5'
+
+# docker compose para subir el monolito a digital ocean
+services: 
+
+    mysql_server:
+        # build: ./basedatos
+        build: 
+            context: ./basedatos
+            dockerfile: Dockerfile
+        # image: java/proto-bd
+        container_name: mysql_server
+        ports: 
+            - 3300:3306
+        restart: always
+        networks: 
+            - backend
+
+    api-articulo: 
+        # build: ./api-articulo
+        build: 
+            context: ./api-articulo
+            dockerfile: Dockerfile
+        # image: java/api-articulo
+        container_name: api-articulo
+        restart: always
+        ports: 
+            - 8000:8081
+        depends_on: 
+            - mysql_server
+        links: 
+            - mysql_server
+        networks: 
+            - backend
+
+    frontend:
+        build: 
+            context: ./frontend
+            dockerfile: Dockerfile
+        container_name: frontend
+        ports: 
+            - 4000:4000
+        depends_on: 
+            - mysql_server
+        links: 
+            - mysql_server
+        networks: 
+            - backend
+
+networks:
+    backend:
+        driver: "bridge"
+

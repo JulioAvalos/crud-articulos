@@ -1,0 +1,30 @@
+<div fxLayout="row" fxLayoutAlign="center">
+    <h3>Detalle articulo</h3>
+</div>
+
+<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center">
+    <div fxLayout="column" fxLayoutAlign="space-evenly none">
+        <mat-form-field>
+            <input matInput placeholder="Descripcion" [(ngModel)]="articulo.descripcion" disabled>
+        </mat-form-field>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="space-evenly none">
+        <mat-form-field>
+            <input matInput type="number" placeholder="Costo" step="0.25" min="0" [(ngModel)]="articulo.ultimoCosto" disabled>
+        </mat-form-field>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="space-evenly none">
+            <mat-form-field>
+                <input matInput placeholder="Fecha Creacion" [(ngModel)]="articulo.fechaHoraCreacion" disabled>
+            </mat-form-field>
+        </div>
+    <div fxFlex="50%" fxLayoutAlign="center">
+        <!-- <img mat-card-image [src]="REST_URL || defaultImage" alt='"magic placerholder"' disabled> -->
+        <img mat-card-image [src]="defaultImage" alt='"magic placerholder"' disabled>
+    </div>
+    <br/>
+    <div fxLayout="row" fxFlexAlign="center" fxLayoutGap="20px" fxFlex>
+        <button mat-raised-button color="primary" (click)="operar()">Aceptar</button>
+        <button mat-raised-button color="accent" (click)="cancelar()">Cancelar</button>
+    </div>
+</div>

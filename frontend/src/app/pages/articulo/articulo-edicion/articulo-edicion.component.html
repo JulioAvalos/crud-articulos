@@ -1,0 +1,35 @@
+<br />
+<div fxLayout="column" fxLayoutAlign="none center">
+    <mat-card>
+        <form class="example-container" [formGroup]="form" #frmArticulo="ngForm" (ngSubmit)="operar()"
+            fxLayout="column">
+            <div [hidden]="true">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="ID" required formControlName="idArticulo">
+                </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="center">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Nombres" minlength="2" required formControlName="descripcion">
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayoutAlign="center">
+                <mat-form-field class="example-full-width">
+                    <input matInput type="number" min="0.01" step="0.25" placeholder="Apellidos" required formControlName="ultimoCosto">
+                </mat-form-field>
+            </div>
+            <br />
+            <div fxLayout="row" fxFlexAlign="center" fxLayoutGap="20px">
+                <button mat-raised-button color="primary" type="submit" [disabled]="frmArticulo.invalid">
+                    <mat-icon>done</mat-icon>
+                    <span>Aceptar</span>
+                </button>
+                <button mat-raised-button color="accent" routerLink='/articulo' type="button">
+                    <mat-icon>close</mat-icon>
+                    <span>Cancelar</span>
+                </button>
+            </div>
+        </form>
+    </mat-card>
+</div>

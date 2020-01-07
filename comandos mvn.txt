@@ -1,0 +1,11 @@
+# argumentos de spring boot para ejecutar el jar con parametros sobreescritos.
+
+# mvn spring-boot:run 
+
+-Dspring-boot.run.arguments=
+--spring.main.banner-mode=off,
+--HOST=localhost,
+--PORT=3306,
+--DATABASE=protocd,
+--USERNAME=root,
+--PASSWORD=toor

@@ -1,0 +1,15 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://${host}:${port}/${database}
+    username: ${username}
+    password: ${password}
+    initialization-mode: always # no usar en produccion!
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate.ddl-auto: update # no usar en produccion! 
+    generate-ddl: true # no usar en produccion! 
+    show-sql: true
+    
