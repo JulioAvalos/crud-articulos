@@ -25,7 +25,7 @@ public class SecUsuarioServiceImpl implements SecUsuarioService{
 
 	@Override
 	public SecUsuarios registrar(SecUsuarios obj) {
-		obj.setClave(passwordEncoder.encode(obj.getClave()));
+		obj.setPassword(passwordEncoder.encode(obj.getPassword()));
 		return repo.save(obj);
 	}
 

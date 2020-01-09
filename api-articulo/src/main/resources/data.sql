@@ -1,13 +1,81 @@
 
-INSERT into SEC_USUARIOS(ADMINISTRADOR, CLAVE, CLAVE_GENERADA, CODCIA, CODIGO_SEGURIDAD, CODUSR, ESTADO_CLAVE, FECHA_ULTIMA_MODIFICACION, FECHA_VENCIMIENTO_CLAVE, NOMBRE, VALIDAR_IP) 
-values(2,'$2a$10$pDBBaL0g/7epijof.0KYy.8sBQPqNEBhgcrRU2/PYMlUXseNdnjwa', '', 1, 0, 'javalos', 'A', '2019-12-10 16:44:33.115', '2020-01-05 00:00:00', 'Julio Amadeo Avalos Urquiza', 'N');
+create table oauth_client_details (
+  client_id VARCHAR(256) PRIMARY KEY,
+  resource_ids VARCHAR(256),
+  client_secret VARCHAR(256),
+  scope VARCHAR(256),
+  authorized_grant_types VARCHAR(256),
+  web_server_redirect_uri VARCHAR(256),
+  authorities VARCHAR(256),
+  access_token_validity INTEGER,
+  refresh_token_validity INTEGER,
+  additional_information VARCHAR(4096),
+  autoapprove VARCHAR(256)
+);
 
-INSERT into SEC_USUARIOS(ADMINISTRADOR, CLAVE, CLAVE_GENERADA, CODCIA, CODIGO_SEGURIDAD, CODUSR, ESTADO_CLAVE, FECHA_ULTIMA_MODIFICACION, FECHA_VENCIMIENTO_CLAVE, NOMBRE, VALIDAR_IP) 
-values(2,'$2a$10$pDBBaL0g/7epijof.0KYy.8sBQPqNEBhgcrRU2/PYMlUXseNdnjwa', '', 1, 0, 'dummy', 'A', '2019-12-10 16:44:33.115', '2020-01-05 00:00:00', 'Dummy User', 'N');
+create table oauth_client_token (
+  token_id VARCHAR(256),
+  token LONGVARBINARY,
+  authentication_id VARCHAR(256) PRIMARY KEY,
+  user_name VARCHAR(256),
+  client_id VARCHAR(256)
+);
 
-INSERT into SEC_USUARIOS(ADMINISTRADOR, CLAVE, CLAVE_GENERADA, CODCIA, CODIGO_SEGURIDAD, CODUSR, ESTADO_CLAVE, FECHA_ULTIMA_MODIFICACION, FECHA_VENCIMIENTO_CLAVE, NOMBRE, VALIDAR_IP) 
-values(2,'$2a$10$pDBBaL0g/7epijof.0KYy.8sBQPqNEBhgcrRU2/PYMlUXseNdnjwa', '', 1, 0, 'test', 'A', '2019-12-10 16:44:33.115', '2020-01-05 00:00:00', 'Test User', 'N');
+create table oauth_access_token (
+  token_id VARCHAR(256),
+  token LONGVARBINARY,
+  authentication_id VARCHAR(256) PRIMARY KEY,
+  user_name VARCHAR(256),
+  client_id VARCHAR(256),
+  authentication LONGVARBINARY,
+  refresh_token VARCHAR(256)
+);
 
+create table oauth_refresh_token (
+  token_id VARCHAR(256),
+  token LONGVARBINARY,
+  authentication LONGVARBINARY
+);
+
+create table oauth_code (
+  code VARCHAR(256), authentication LONGVARBINARY
+);
+
+create table oauth_approvals (
+	userId VARCHAR(256),
+	clientId VARCHAR(256),
+	scope VARCHAR(256),
+	status VARCHAR(10),
+	expiresAt TIMESTAMP,
+	lastModifiedAt TIMESTAMP
+);
+
+
+-- customized oauth_client_details table
+create table ClientDetails (
+  appId VARCHAR(256) PRIMARY KEY,
+  resourceIds VARCHAR(256),
+  appSecret VARCHAR(256),
+  scope VARCHAR(256),
+  grantTypes VARCHAR(256),
+  redirectUrl VARCHAR(256),
+  authorities VARCHAR(256),
+  access_token_validity INTEGER,
+  refresh_token_validity INTEGER,
+  additionalInformation VARCHAR(4096),
+  autoApproveScopes VARCHAR(256)
+);
+
+
+
+INSERT into SEC_USUARIOS(ADMINISTRADOR, CLAVE, CLAVE_GENERADA, CODCIA, CODIGO_SEGURIDAD, CODUSR, ESTADO_CLAVE, FECHA_ULTIMA_MODIFICACION, FECHA_VENCIMIENTO_CLAVE, NOMBRE, VALIDAR_IP, ESTADO) 
+values(2,'$2a$10$pDBBaL0g/7epijof.0KYy.8sBQPqNEBhgcrRU2/PYMlUXseNdnjwa', '', 1, 0, 'javalos', 'A', '2019-12-10 16:44:33.115', '2020-01-05 00:00:00', 'Julio Amadeo Avalos Urquiza', 'N', '1');
+
+INSERT into SEC_USUARIOS(ADMINISTRADOR, CLAVE, CLAVE_GENERADA, CODCIA, CODIGO_SEGURIDAD, CODUSR, ESTADO_CLAVE, FECHA_ULTIMA_MODIFICACION, FECHA_VENCIMIENTO_CLAVE, NOMBRE, VALIDAR_IP, ESTADO) 
+values(2,'$2a$10$pDBBaL0g/7epijof.0KYy.8sBQPqNEBhgcrRU2/PYMlUXseNdnjwa', '', 1, 0, 'dummy', 'A', '2019-12-10 16:44:33.115', '2020-01-05 00:00:00', 'Dummy User', 'N','1');
+
+INSERT into SEC_USUARIOS(ADMINISTRADOR, CLAVE, CLAVE_GENERADA, CODCIA, CODIGO_SEGURIDAD, CODUSR, ESTADO_CLAVE, FECHA_ULTIMA_MODIFICACION, FECHA_VENCIMIENTO_CLAVE, NOMBRE, VALIDAR_IP,ESTADO) 
+values(2,'$2a$10$pDBBaL0g/7epijof.0KYy.8sBQPqNEBhgcrRU2/PYMlUXseNdnjwa', '', 1, 0, 'test', 'A', '2019-12-10 16:44:33.115', '2020-01-05 00:00:00', 'Test User', 'N','1');
 
 
 INSERT INTO ARTICULO(DESCRIPCION, FECHA_HORA_CREACION, ULTIMO_COSTO) VALUES('7UP', parsedatetime('09-07-2014 17:00:12.57', 'dd-MM-yyyy hh:mm:ss.SS'), 7.99);

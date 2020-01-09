@@ -46,7 +46,7 @@ public class SecUsuariosController {
         URI location = ServletUriComponentsBuilder
         		.fromCurrentRequest()
         		.path("/{id}")
-        		.buildAndExpand(obj.getId())
+        		.buildAndExpand(obj.getIdUsuario())
         		.toUri();
         return ResponseEntity.created(location).build();
     }
@@ -60,7 +60,7 @@ public class SecUsuariosController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> eliminar(@PathVariable Long id){
         SecUsuarios obj = service.leerPorId(id);
-        if(obj.getId() != null){
+        if(obj.getIdUsuario() != null){
             service.eliminar(id);
         }
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
